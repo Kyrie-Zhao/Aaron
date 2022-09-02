@@ -42,11 +42,13 @@ network = "conv"
 target = tvm.target.Target("cuda")
 dtype = "float32"
 log_file = "%s-cuda-2000.json" % (network)
-#lib_name = "%s-2000-lib.so" % (network)
+#log_file = "best_iso-IOS.json"
+lib_name = "%s-2000-lib.so" % (network)
 input_shape = (16, 1, 28, 28)
-"""
-tasks, task_weights = auto_scheduler.extract_tasks(mod["main"], params, target)
+#input_shape = (1,192, 35, 35)
 
+#tasks, task_weights = auto_scheduler.extract_tasks(mod["main"], params, target)
+"""
 print(len(tasks))
 print(tasks[0].compute_dag)
 cuda_source = tasks[0].print_best(log_file, print_mode="cuda")
@@ -59,12 +61,29 @@ print(sch)
 print(args)
 print(tvm.lower(sch, args, simple_mode=True))"""
 
+
 with auto_scheduler.ApplyHistoryBest(log_file):
     with tvm.transform.PassContext(opt_level=3, config={"relay.backend.use_auto_scheduler": True}):
-        graph, lib, params = relay.build(mod, target=target, params=params)
-        #print(lib.ir_mod) 
+        #mod, lib, params= relay.build(mod, target="c", params=params)
+        lib1 = relay.build(mod,tvm.target.Target('c --link-params --runtime=c '), params=params)
+        #lib1.save('c', fmt='c')
+        #tvm.module
+        #lib1.export_library("compiled_model.tar")
+        #libmod = lib1.get_lib()
+        #print(libmod)
+        #print(lib1.get_params()) 
         print("fuk")     
-        print(graph)
-        print(lib)
-        print(params)
+        #print(graph)
+        print(type(lib))
+        #print(params)
+        
+        #source_code = lib.imported_modules[0].get_source()
+        print(str(lib.get_source()))
+        #print(source_code)
+        #source_code = lib.imported_modules[0].get_source()
+        #print(source_code)
+        #with open("cudasource_inception.cu","w") as f:
+        #  json.dump(source_code,f)
+        #  f.close()
+        #print(source_code)
     

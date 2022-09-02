@@ -1,3 +1,12 @@
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#include <stdio.h>
+#include <stdlib.h>
+#include <cstring>
 #ifdef _WIN32
   using uint = unsigned int;
   using uchar = unsigned char;
@@ -11,7 +20,7 @@
   #define int64_t long long
   #define uint64_t unsigned long long
 #endif
-extern "C" __global__ void default_function_kernel0(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_add, float* __restrict__ placeholder2) {
+extern "C" __global__ void fused_nn_conv2d_add_1_kernel0(float* __restrict__ placeholder, float* __restrict__ placeholder1, float* __restrict__ T_add, float* __restrict__ placeholder2) {
   float compute[52];
   __shared__ float pad_temp_shared[784];
   __shared__ float placeholder_shared[72];

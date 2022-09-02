@@ -1,0 +1,80 @@
+{
+    "nodes": [
+      {
+        "op": "null",
+        "name": "input0",
+        "inputs": []
+      },
+      {
+        "op": "null",
+        "name": "p0",
+        "inputs": []
+      },
+      {
+        "op": "null",
+        "name": "p1",
+        "inputs": []
+      },
+      {
+        "op": "tvm_op",
+        "name": "fused_nn_conv2d_add",
+        "attrs": {
+          "num_outputs": "1",
+          "num_inputs": "3",
+          "flatten_data": "0",
+          "func_name": "fused_nn_conv2d_add"
+        },
+        "inputs": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ]
+        ]
+      }
+    ],
+    "arg_nodes": [0, 1, 2],
+    "heads": [
+      [
+        3,
+        0,
+        0
+      ]
+    ],
+    "attrs": {
+      "dltype": [
+        "list_str",
+        [
+          "float32",
+          "float32",
+          "float32",
+          "float32"
+        ]
+      ],
+      "storage_id": [
+        "list_int",
+        [0, 1, 2, 3]
+      ],
+      "shape": [
+        "list_shape",
+        [
+          [16, 1, 28, 28],
+          [32, 1, 3, 3],
+          [1, 32, 1, 1],
+          [16, 32, 26, 26]
+        ]
+      ]
+    },
+    "node_row_ptr": [0, 1, 2, 3, 4]
+  }
+  
