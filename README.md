@@ -1,4 +1,3 @@
-# IoTensor: Bring DNN compiler to IoT
-
-### To solve multi-DNN coordination problem on edge GPU
+# IoTensor: A multi-DNN accelerator on edge GPU
+### Under progress
 
