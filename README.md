@@ -1,3 +1,3 @@
-# IoTensor: A multi-DNN accelerator on edge GPU
+# IoTensor: A Multi-DNN Inference Accelerator on Edge GPU
 ### Under progress
 
